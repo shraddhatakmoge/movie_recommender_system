@@ -1,9 +1,10 @@
 import pickle
 import streamlit as st
 import requests
+API_KEY = st.secrets["TMDB_API_KEY"]
 
 def fetch_poster(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=c179ce0e0ee379981c2f75bea3d52058&language=en-US".format(movie_id)
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=en-US"
     data = requests.get(url)
     data = data.json()
     poster_path = data['poster_path']
